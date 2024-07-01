@@ -13,14 +13,14 @@ const Informacion = ({ person, onBackClick }) => {
           <p>En busca de un Sugar Daddy? escríbeme para disfrutar juntos de la vida. ¿Te animas?</p>
           <ul>
             <li><strong>Edad:</strong> {person.age}</li>
-            <li><strong>Altura:</strong> 1.85 cm</li>
-            <li><strong>Profesión:</strong> Ingeniero</li>
-            <li><strong>Etnia:</strong> Latino</li>
+            <li><strong>Altura:</strong> {person.height}</li>
+            <li><strong>Profesión:</strong> {person.profession}</li>
+            <li><strong>Etnia:</strong> {person.ethnicity}</li>
           </ul>
           <div className="info-tags">
             <div><strong>Idioma:</strong> <span>Español</span> <span>Inglés</span></div>
-            <div><strong>Ocio:</strong> <span>Conciertos</span> <span>Cine</span> <span>Autos</span></div>
-            <div><strong>Deporte:</strong> <span>Fútbol</span> <span>Natación</span></div>
+            <div><strong>Ocio:</strong> {person.interests.map(interest => <span key={interest}>{interest}</span>)}</div>
+            <div><strong>Deporte:</strong> {person.sports.map(sport => <span key={sport}>{sport}</span>)}</div>
           </div>
           <div className="info-icons">
             <div className="icon-container">
