@@ -4,12 +4,14 @@ import Main from './Main';
 import Single from './Single';
 import Chat from './Chat';
 import Informacion from './Informacion';
+import VIP from './VIP';
 import './style.css';
 
 const App = () => {
   const mainRef = useRef(null);
   const [selectedPersonForInfo, setSelectedPersonForInfo] = useState(null);
   const [selectedPersonForChat, setSelectedPersonForChat] = useState(null);
+  const [showVIP, setShowVIP] = useState(false);
   const [messages, setMessages] = useState({});
   const [activeTab, setActiveTab] = useState('mensajes');
   const [blockedUsers, setBlockedUsers] = useState([]);
@@ -21,16 +23,25 @@ const App = () => {
     }
     setSelectedPersonForInfo(null);
     setSelectedPersonForChat(null);
+    setShowVIP(false);
+  };
+
+  const handleVIPClick = () => {
+    setShowVIP(true);
+    setSelectedPersonForInfo(null);
+    setSelectedPersonForChat(null);
   };
 
   const handleSelectPersonForInfo = (person) => {
     setSelectedPersonForInfo(person);
-    setSelectedPersonForChat(null); // Reset chat selection when selecting person for info
+    setSelectedPersonForChat(null);
+    setShowVIP(false);
   };
 
   const handleSelectPersonForChat = (person) => {
     setSelectedPersonForChat(person);
-    setSelectedPersonForInfo(null); // Reset info selection when selecting person for chat
+    setSelectedPersonForInfo(null);
+    setShowVIP(false);
   };
 
   const handleNewMessage = (person, newMessage) => {
@@ -50,7 +61,7 @@ const App = () => {
 
   return (
     <div>
-      <Header onHomeClick={handleHomeClick} />
+      <Header onHomeClick={handleHomeClick} onVIPClick={handleVIPClick} />
       <div className="content">
         <Single
           messages={messages}
@@ -60,7 +71,9 @@ const App = () => {
           blockedUsers={blockedUsers}
           favoriteUsers={favoriteUsers}
         />
-        {selectedPersonForInfo ? (
+        {showVIP ? (
+          <VIP onBackClick={() => setShowVIP(false)} />
+        ) : selectedPersonForInfo ? (
           <Informacion person={selectedPersonForInfo} onBackClick={() => setSelectedPersonForInfo(null)} />
         ) : selectedPersonForChat ? (
           <Chat

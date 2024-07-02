@@ -3,7 +3,7 @@ import './style.css';
 import logoImage from './imagenes/logo.png'; // Asegúrate de que esta ruta sea correcta
 import profileImage from './imagenes/chica.jpg';
 
-const Header = ({ onHomeClick }) => {
+const Header = ({ onHomeClick, onVIPClick }) => {
   return (
     <header className="container-fluid navbar-expand-lg">
       <div className="header-content">
@@ -19,7 +19,7 @@ const Header = ({ onHomeClick }) => {
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="#" onClick={onVIPClick}>
                 <i className="fas fa-crown" style={{ color: 'blue' }}></i> VIP
               </a>
             </li>
