@@ -830,3 +830,283 @@ nav a:hover {
 .toggle-button:hover {
   background-color: #292525;
 }
+
+/* HomePage */
+
+.homepage-header {
+  display: flex;
+  height: 80px;
+  position: relative;
+}
+
+.homepage-header-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  background-color: #000;
+  color: #fff;
+  padding: 0 20px;
+}
+
+.homepage-logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.homepage-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.homepage-header-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.homepage-header-right nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.homepage-header-right nav ul li {
+  margin-left: 20px;
+}
+
+.homepage-header-right nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.homepage-hero {
+  display: flex;
+  height: 100vh;
+}
+
+.homepage-hero-left {
+  flex: 1;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.homepage-hero-right {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.homepage-hero-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.homepage-hero-content {
+  max-width: 600px;
+  text-align: center;
+}
+
+.homepage-hero h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.homepage-hero p {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.homepage-cta-button {
+  background-color: #fff;
+  color: #000;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.homepage-about {
+  display: flex;
+  justify-content: space-between; /* Distribuye los elementos a lo largo del espacio disponible */
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  text-align: center; /* Alinea el contenido centrado */
+}
+
+.homepage-about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+}
+
+.homepage-about-content .homepage-logo {
+  font-size: 24px; /* Ajusta el tamaño de la fuente según sea necesario */
+  letter-spacing: 2px; /* Ajusta el espaciado entre letras según sea necesario */
+}
+
+.homepage-logo-container {
+  flex: 1; /* Ocupa el espacio necesario */
+  text-align: center; /* Alinea el logo al centro */
+}
+
+.homepage-description {
+  flex: 1; /* Ocupa el espacio necesario */
+  text-align: left; /* Alinea el texto a la izquierda */
+  padding-left: 20px; /* Espaciado izquierdo */
+}
+
+.homepage-logo {
+  width: 100px; /* Tamaño del logo */
+}
+
+.homepage-about .homepage-logo {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.homepage-testimonials {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+  position: relative;
+}
+
+.homepage-testimonial {
+  width: 250px; /* Tamaño fijo para las tarjetas */
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  margin: 0 10px 20px; /* Espacio entre tarjetas */
+  overflow: hidden; /* Ocultar contenido que desborde */
+  text-align: center; /* Alinea el contenido al centro */
+}
+
+.homepage-testimonial-content {
+  padding: 20px; /* Espacio interno */
+  text-align: center; /* Centrar contenido */
+}
+
+.homepage-testimonial-image {
+  width: 100px; /* Tamaño del contenedor de la imagen */
+  height: 100px; /* Tamaño del contenedor de la imagen */
+  margin: 0 auto 10px; /* Espacio debajo de la imagen */
+  overflow: hidden; /* Ocultar partes de la imagen fuera del contenedor */
+  border-radius: 50%; /* Hacer la imagen circular */
+}
+
+.homepage-user-avatar {
+  width: 100%; /* Ajustar imagen al tamaño del contenedor */
+  height: auto; /* Altura automática */
+  border-radius: 50%; /* Hacer la imagen circular */
+  object-fit: cover; /* Ajustar la imagen manteniendo la relación de aspecto */
+}
+
+.homepage-testimonial-text {
+  font-size: 16px; /* Tamaño del texto */
+  color: #555; /* Color del texto */
+  line-height: 1.5; /* Espaciado entre líneas */
+}
+
+.homepage-testimonials h2 {
+  margin-bottom: 40px;
+  font-size: 24px;
+}
+
+.homepage-testimonial-slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  justify-content: center;
+}
+
+.homepage-testimonial-slider::-webkit-scrollbar { /* WebKit */
+  width: 0;
+  height: 0;
+}
+
+.homepage-testimonial {
+  min-width: 200px;
+  margin: 0 5px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.homepage-testimonial img {
+  width: 100%;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.homepage-prev, .homepage-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 2;
+  transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.homepage-prev:hover, .homepage-next:hover {
+  background-color: rgba(0, 0, 0, 0.8); /* Cambio de color al pasar el cursor */
+}
+
+.homepage-prev {
+  left: 10px;
+}
+
+.homepage-next {
+  right: 10px;
+}
+
+.homepage-footer-columns {
+  display: flex;
+  justify-content: space-between; /* Distribuir el espacio entre las columnas */
+  padding: 30px 10rem; /* Padding interno */
+  background-color: #000;
+  color: #fff;
+}
+
+.homepage-footer-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.homepage-footer-column a {
+  color: #fff;
+  text-decoration: none;
+  margin: 5px 0; /* Espacio entre enlaces */
+}
+
+.homepage-footer p {
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  margin: 0;
+}

@@ -5,6 +5,7 @@ import Single from './Single';
 import Chat from './Chat';
 import Informacion from './Informacion';
 import VIP from './VIP';
+import HomePage from './HomePage'; 
 import './style.css';
 
 const App = () => {
@@ -12,11 +13,12 @@ const App = () => {
   const [selectedPersonForInfo, setSelectedPersonForInfo] = useState(null);
   const [selectedPersonForChat, setSelectedPersonForChat] = useState(null);
   const [showVIP, setShowVIP] = useState(false);
-  const [showSingle, setShowSingle] = useState(true); // Nuevo estado para controlar la visibilidad de Single
+  const [showSingle, setShowSingle] = useState(true); 
   const [messages, setMessages] = useState({});
   const [activeTab, setActiveTab] = useState('mensajes');
   const [blockedUsers, setBlockedUsers] = useState([]);
   const [favoriteUsers, setFavoriteUsers] = useState([]);
+  const [showHomePage, setShowHomePage] = useState(true); 
 
   const handleHomeClick = () => {
     if (mainRef.current) {
@@ -64,49 +66,59 @@ const App = () => {
     setShowSingle(prevState => !prevState); // Cambia el estado de visibilidad de Single
   };
 
+  const handleEnterClick = () => {
+    setShowHomePage(false);
+  };
+
   return (
     <div>
-      <Header onHomeClick={handleHomeClick} onVIPClick={handleVIPClick} />
-      <div className="content">
-        {showSingle && (
-          <Single
-            messages={messages}
-            activeTab={activeTab}
-            onTabClick={setActiveTab}
-            onSelectPerson={handleSelectPersonForChat}
-            blockedUsers={blockedUsers}
-            favoriteUsers={favoriteUsers}
-            toggleSingle={toggleSingle} // Pasamos la función toggleSingle
-          />
-        )}
-        {!showSingle && (
-          <button onClick={toggleSingle} className="toggle-button">Abrir</button>
-        )}
-        {showVIP ? (
-          <VIP onBackClick={() => setShowVIP(false)} />
-        ) : selectedPersonForInfo ? (
-          <Informacion 
-            person={selectedPersonForInfo} 
-            onBackClick={() => setSelectedPersonForInfo(null)}
-            onChatClick={handleSelectPersonForChat}
-            onFavoriteClick={handleFavoriteClick}
-          />
-        ) : selectedPersonForChat ? (
-          <Chat
-            person={selectedPersonForChat}
-            messages={messages[selectedPersonForChat.name] || []}
-            onNewMessage={handleNewMessage}
-            onBlockUser={handleBlockUser}
-          />
-        ) : (
-          <Main
-            ref={mainRef}
-            onPersonClick={handleSelectPersonForInfo}
-            onFavoriteClick={handleFavoriteClick}
-            onChatClick={handleSelectPersonForChat}
-          />
-        )}
-      </div>
+      {showHomePage ? (
+        <HomePage onEnterClick={handleEnterClick} />
+      ) : (
+        <>
+          <Header onHomeClick={handleHomeClick} onVIPClick={handleVIPClick} />
+          <div className="content">
+            {showSingle && (
+              <Single
+                messages={messages}
+                activeTab={activeTab}
+                onTabClick={setActiveTab}
+                onSelectPerson={handleSelectPersonForChat}
+                blockedUsers={blockedUsers}
+                favoriteUsers={favoriteUsers}
+                toggleSingle={toggleSingle} // Pasamos la función toggleSingle
+              />
+            )}
+            {!showSingle && (
+              <button onClick={toggleSingle} className="toggle-button">Abrir</button>
+            )}
+            {showVIP ? (
+              <VIP onBackClick={() => setShowVIP(false)} />
+            ) : selectedPersonForInfo ? (
+              <Informacion 
+                person={selectedPersonForInfo} 
+                onBackClick={() => setSelectedPersonForInfo(null)}
+                onChatClick={handleSelectPersonForChat}
+                onFavoriteClick={handleFavoriteClick}
+              />
+            ) : selectedPersonForChat ? (
+              <Chat
+                person={selectedPersonForChat}
+                messages={messages[selectedPersonForChat.name] || []}
+                onNewMessage={handleNewMessage}
+                onBlockUser={handleBlockUser}
+              />
+            ) : (
+              <Main
+                ref={mainRef}
+                onPersonClick={handleSelectPersonForInfo}
+                onFavoriteClick={handleFavoriteClick}
+                onChatClick={handleSelectPersonForChat}
+              />
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 };
