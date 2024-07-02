@@ -16,7 +16,7 @@ const HomePage = ({ onEnterClick }) => {
         <div className="homepage-header-right">
           <nav>
             <ul>
-              <li><a href="#" onClick={onEnterClick}>Enter</a></li>
+              <li><a href="#" onClick={onEnterClick}>Iniciar Sesion</a></li>
             </ul>
           </nav>
         </div>
@@ -25,9 +25,9 @@ const HomePage = ({ onEnterClick }) => {
       <section className="homepage-hero">
         <div className="homepage-hero-left">
           <div className="homepage-hero-content">
-            <h1>Welcome to SuggarDaddy</h1>
-            <p>Your perfect match is just a click away</p>
-            <button className="homepage-cta-button" onClick={onEnterClick}>Get Started</button>
+            <h1>¡Bienvenido a nuestra exclusiva comunidad de MY SUGAR DADDY!</h1>
+            <p>Como miembro de nuestra plataforma, estas a punto de embarcarte en un emocionante viaje donde la pasión, el apoyo y el estilo de vida de alto nivel se entrelazan </p>
+            <button className="homepage-cta-button" onClick={onEnterClick}>Empezar</button>
           </div>
         </div>
         <div className="homepage-hero-right">
