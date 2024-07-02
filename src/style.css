@@ -560,10 +560,11 @@ nav a:hover {
   flex-direction: column;
   align-items: center;
   margin-left: -10px;
+  overflow-y: auto; /* Asegura que se pueda hacer scroll */
 }
 
 .chat-profile .profile-image {
-  width: 150px; /* Cambia el tamaño de la imagen */
+  width: 200px; /* Cambia el tamaño de la imagen */
   height: auto;
   border-radius: 10px;
   margin-bottom: 15px;
@@ -650,4 +651,64 @@ nav a:hover {
   height: 50px;
   border-radius: 50%;
   margin-right: 10px;
+}
+
+.action-buttons {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.block-button,
+.report-button {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 10px 0;
+  width: 80%;
+  text-align: center;
+}
+
+.block-button:hover,
+.report-button:hover {
+  background-color: #555;
+}
+
+
+
+/* Bloqueados */
+.blocked-list {
+  background-color: #222;
+  padding: 1em;
+  color: white;
+}
+
+.blocked-user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.blocked-user-avatar {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 1em;
+}
+
+.blocked-user-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.blocked-user-name {
+  font-weight: bold;
+}
+
+.blocked-user-description {
+  color: gray;
 }

@@ -19,8 +19,8 @@ const Informacion = ({ person, onBackClick }) => {
           </ul>
           <div className="info-tags">
             <div><strong>Idioma:</strong> <span>Español</span> <span>Inglés</span></div>
-            <div><strong>Ocio:</strong> {person.interests.map(interest => <span key={interest}>{interest}</span>)}</div>
-            <div><strong>Deporte:</strong> {person.sports.map(sport => <span key={sport}>{sport}</span>)}</div>
+            <div><strong>Ocio:</strong> {person.interests && person.interests.map(interest => <span key={interest}>{interest}</span>)}</div>
+            <div><strong>Deporte:</strong> {person.sports && person.sports.map(sport => <span key={sport}>{sport}</span>)}</div>
           </div>
           <div className="info-icons">
             <div className="icon-container">

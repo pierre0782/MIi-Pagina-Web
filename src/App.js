@@ -8,74 +8,74 @@ import './style.css';
 
 const App = () => {
   const mainRef = useRef(null);
-  const [selectedPerson, setSelectedPerson] = useState(null);
+  const [selectedPersonForInfo, setSelectedPersonForInfo] = useState(null);
+  const [selectedPersonForChat, setSelectedPersonForChat] = useState(null);
   const [messages, setMessages] = useState({});
-  const [favorites, setFavorites] = useState([]);
   const [activeTab, setActiveTab] = useState('mensajes');
-  const [showInfo, setShowInfo] = useState(false);
+  const [blockedUsers, setBlockedUsers] = useState([]);
+  const [favoriteUsers, setFavoriteUsers] = useState([]);
 
   const handleHomeClick = () => {
     if (mainRef.current) {
       mainRef.current.handleRefreshClick();
     }
-    setSelectedPerson(null);
-    setShowInfo(false);
+    setSelectedPersonForInfo(null);
+    setSelectedPersonForChat(null);
   };
 
-  const handleSelectPerson = (person) => {
-    setSelectedPerson(person);
-    setShowInfo(false);
+  const handleSelectPersonForInfo = (person) => {
+    setSelectedPersonForInfo(person);
+    setSelectedPersonForChat(null); // Reset chat selection when selecting person for info
   };
 
-  const handleShowInfo = (person) => {
-    setSelectedPerson(person);
-    setShowInfo(true);
+  const handleSelectPersonForChat = (person) => {
+    setSelectedPersonForChat(person);
+    setSelectedPersonForInfo(null); // Reset info selection when selecting person for chat
   };
 
   const handleNewMessage = (person, newMessage) => {
     setMessages((prevMessages) => ({
       ...prevMessages,
-      [person.name]: [...(prevMessages[person.name] || []), newMessage],
+      [person.name]: [...(prevMessages[person.name] || []), { ...newMessage, person }],
     }));
   };
 
-  const handleAddToFavorites = (person) => {
-    setFavorites((prevFavorites) => {
-      if (!prevFavorites.some(fav => fav.name === person.name)) {
-        return [...prevFavorites, person];
-      }
-      return prevFavorites;
-    });
+  const handleBlockUser = (person) => {
+    setBlockedUsers((prevBlockedUsers) => [...prevBlockedUsers, person]);
   };
 
-  const handleBackToMain = () => {
-    setSelectedPerson(null);
-    setShowInfo(false);
+  const handleFavoriteClick = (person) => {
+    setFavoriteUsers((prevFavoriteUsers) => [...prevFavoriteUsers, person]);
   };
 
   return (
     <div>
-      <Header onHomeClick={handleHomeClick}/>
+      <Header onHomeClick={handleHomeClick} />
       <div className="content">
         <Single
           messages={messages}
           activeTab={activeTab}
           onTabClick={setActiveTab}
-          onSelectPerson={handleSelectPerson}
-          favorites={favorites} // Pasar los favoritos
+          onSelectPerson={handleSelectPersonForChat}
+          blockedUsers={blockedUsers}
+          favoriteUsers={favoriteUsers}
         />
-        {selectedPerson ? (
-          showInfo ? (
-            <Informacion person={selectedPerson} onBackClick={handleBackToMain} />
-          ) : (
-            <Chat
-              person={selectedPerson}
-              messages={messages[selectedPerson.name] || []}
-              onNewMessage={handleNewMessage}
-            />
-          )
+        {selectedPersonForInfo ? (
+          <Informacion person={selectedPersonForInfo} onBackClick={() => setSelectedPersonForInfo(null)} />
+        ) : selectedPersonForChat ? (
+          <Chat
+            person={selectedPersonForChat}
+            messages={messages[selectedPersonForChat.name] || []}
+            onNewMessage={handleNewMessage}
+            onBlockUser={handleBlockUser}
+          />
         ) : (
-          <Main ref={mainRef} onPersonClick={handleShowInfo} onFavoriteClick={handleAddToFavorites} onChatClick={handleSelectPerson} /> // Pasar la función de favoritos y mostrar info y chat
+          <Main
+            ref={mainRef}
+            onPersonClick={handleSelectPersonForInfo}
+            onFavoriteClick={handleFavoriteClick}
+            onChatClick={handleSelectPersonForChat}
+          />
         )}
       </div>
     </div>

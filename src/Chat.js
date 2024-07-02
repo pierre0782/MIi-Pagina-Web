@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.css';
 import iconImage1 from './imagenes/contactos.png'; 
 import iconImage2 from './imagenes/gif.png'; 
@@ -12,7 +12,7 @@ import gif4 from './imagenes/GIF4.gif';
 import gif5 from './imagenes/GIF5.gif'; 
 import gif6 from './imagenes/GIF6.gif'; 
 
-const Chat = ({ person, messages, onNewMessage }) => {
+const Chat = ({ person, messages, onNewMessage, onBlockUser }) => {
   const [newMessage, setNewMessage] = useState('');
   const [showDetails, setShowDetails] = useState(false);
   const [showGifs, setShowGifs] = useState(false);
@@ -20,7 +20,7 @@ const Chat = ({ person, messages, onNewMessage }) => {
   const handleSendMessage = () => {
     if (newMessage.trim() !== '') {
       const timestamp = new Date();
-      const message = { text: newMessage, sender: 'user', timestamp, person };
+      const message = { text: newMessage, sender: 'user', timestamp };
       onNewMessage(person, message);
       setNewMessage('');
     }
@@ -28,26 +28,30 @@ const Chat = ({ person, messages, onNewMessage }) => {
 
   const handleIcon1Click = () => {
     setShowDetails(!showDetails);
-    setShowGifs(false); // Asegúrate de que los GIFs estén ocultos cuando se muestran los detalles de contacto
+    setShowGifs(false);
   };
 
   const handleIcon2Click = () => {
     setShowGifs(!showGifs);
-    setShowDetails(false); // Asegúrate de que los detalles de contacto estén ocultos cuando se muestran los GIFs
+    setShowDetails(false);
   };
 
   const handleContactClick = (icon, content) => {
     const timestamp = new Date();
     const message = { text: `<img src="${icon}" alt="icon" class="contact-icon"/> ${content}`, sender: 'user', timestamp, isContact: true };
     onNewMessage(person, message);
-    setShowDetails(false); // Oculta los detalles de contacto después de hacer clic
+    setShowDetails(false);
   };
 
   const handleGifClick = (gif) => {
     const timestamp = new Date();
     const message = { text: `<img src="${gif}" alt="GIF" class="gif-img"/>`, sender: 'user', timestamp, isGif: true };
     onNewMessage(person, message);
-    setShowGifs(false); // Oculta los GIFs después de hacer clic
+    setShowGifs(false);
+  };
+
+  const handleBlockClick = () => {
+    onBlockUser(person);
   };
 
   return (
@@ -123,6 +127,8 @@ const Chat = ({ person, messages, onNewMessage }) => {
           <div><strong>Intereses:</strong> {person.interests && person.interests.map(interest => <span key={interest}>{interest}</span>)}</div>
           <div><strong>Deportes:</strong> {person.sports && person.sports.map(sport => <span key={sport}>{sport}</span>)}</div>
         </div>
+        <button className="block-button" onClick={handleBlockClick}>Bloquear a {person.name}</button>
+        <button className="report-button">Denunciar a {person.name}</button>
       </div>
     </div>
   );

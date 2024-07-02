@@ -11,20 +11,20 @@ import image8 from './imagenes/8.png';
 
 const additionalImages = [
   { src: image1, name: 'Luis Zambrano', age: '35 años', height: '1.75 cm', profession: 'Ingeniero', ethnicity: 'Latino', interests: ['Conciertos', 'Cine', 'Autos'], sports: ['Fútbol', 'Natación'], university: 'UNT', distance: '64 kilómetros', intention: 'Hacer amigos' },
-  { src: image2, name: 'Santiago Pacherres', age: '30 años', height: '1.80 cm', profession: 'Médico', ethnicity: 'Caucásico', interests: ['Lectura', 'Viajes'], sports: ['Tenis', 'Ciclismo'], university: 'UNT', distance: '64 kilómetros', intención: 'Hacer amigos' },
-  { src: image3, name: 'Mauricio Berrospi', age: '35 años', height: '1.65 cm', profession: 'Abogado', ethnicity: 'Afroamericano', interests: ['Música', 'Teatro'], sports: ['Baloncesto'], university: 'UNT', distance: '64 kilómetros', intención: 'Hacer amigos'  },
-  { src: image4, name: 'Oscar Llaure', age: '42 años', height: '1.70 cm', profession: 'Arquitecto', ethnicity: 'Asiático', interests: ['Fotografía', 'Pintura'], sports: ['Yoga'], university: 'UNT', distance: '64 kilómetros', intención: 'Hacer amigos' },
-  { src: image5, name: 'Stefano Yepez', age: '32 años', height: '1.75 cm', profession: 'Ingeniero', ethnicity: 'Latino', interests: ['Fotografía', 'Futbol'], sports: ['Futbol'], university: 'UNT', distance: '64 kilómetros', intención: 'Hacer amigos' },
-  { src: image6, name: 'Walter Ivan', age: '37 años', height: '1.75 cm', profession: 'Docente', ethnicity: 'Caucásico', interests: ['Tenis', 'Pintura'], sports: ['Atletismo'], university: 'UNT', distance: '64 kilómetros', intención: 'Hacer amigos'},
-  { src: image7, name: 'Matias Alcalde', age: '43 años', height: '1.65 cm', profession: 'Empresario', ethnicity: 'Asiático', interests: ['Lectura', 'Autos'], sports: ['Snowboard'], university: 'UNT', distance: '64 kilómetros', intención: 'Hacer amigos' },
-  { src: image8, name: 'Angelo Sosa', age: '32 años', height: '1.83 cm', profession: 'Ingeniero de Sistemas', ethnicity: 'Latino', interests: ['Música', 'Deporte', 'Conciertos'], sports: ['Ninguno'], university: 'UNT', distance: '64 kilómetros', intención: 'Hacer amigos'},
+  { src: image2, name: 'Santiago Pacherres', age: '30 años', height: '1.80 cm', profession: 'Médico', ethnicity: 'Caucásico', interests: ['Lectura', 'Viajes'], sports: ['Tenis', 'Ciclismo'], university: 'UNT', distance: '64 kilómetros', intention: 'Hacer amigos' },
+  { src: image3, name: 'Mauricio Berrospi', age: '35 años', height: '1.65 cm', profession: 'Abogado', ethnicity: 'Afroamericano', interests: ['Música', 'Teatro'], sports: ['Baloncesto'], university: 'UNT', distance: '64 kilómetros', intention: 'Hacer amigos'  },
+  { src: image4, name: 'Oscar Llaure', age: '42 años', height: '1.70 cm', profession: 'Arquitecto', ethnicity: 'Asiático', interests: ['Fotografía', 'Pintura'], sports: ['Yoga'], university: 'UNT', distance: '64 kilómetros', intention: 'Hacer amigos' },
+  { src: image5, name: 'Stefano Yepez', age: '32 años', height: '1.75 cm', profession: 'Ingeniero', ethnicity: 'Latino', interests: ['Fotografía', 'Futbol'], sports: ['Futbol'], university: 'UNT', distance: '64 kilómetros', intention: 'Hacer amigos' },
+  { src: image6, name: 'Walter Ivan', age: '37 años', height: '1.75 cm', profession: 'Docente', ethnicity: 'Caucásico', interests: ['Tenis', 'Pintura'], sports: ['Atletismo'], university: 'UNT', distance: '64 kilómetros', intention: 'Hacer amigos'},
+  { src: image7, name: 'Matias Alcalde', age: '43 años', height: '1.65 cm', profession: 'Empresario', ethnicity: 'Asiático', interests: ['Lectura', 'Autos'], sports: ['Snowboard'], university: 'UNT', distance: '64 kilómetros', intention: 'Hacer amigos' },
+  { src: image8, name: 'Angelo Sosa', age: '32 años', height: '1.83 cm', profession: 'Ingeniero de Sistemas', ethnicity: 'Latino', interests: ['Música', 'Deporte', 'Conciertos'], sports: ['Ninguno'], university: 'UNT', distance: '64 kilómetros', intention: 'Hacer amigos'},
 ];
 
 const Main = forwardRef((props, ref) => {
   const initialImages = [
     { src: image1, name: 'Luis Zambrano', age: '35 años', height: '1.75 cm', profession: 'Ingeniero', ethnicity: 'Latino', interests: ['Conciertos', 'Cine', 'Autos'], sports: ['Fútbol', 'Natación'], university: 'UNT', distance: '64 kilómetros', intention: 'Hacer amigos' },
-    { src: image2, name: 'Santiago Pacherres', age: '30 años', height: '1.80 cm', profession: 'Médico', ethnicity: 'Caucásico', interests: ['Lectura', 'Viajes'], sports: ['Tenis', 'Ciclismo'], university: 'UNT', distance: '64 kilómetros', intención: 'Hacer amigos' },
-    { src: image3, name: 'Mauricio Berrospi', age: '35 años', height: '1.65 cm', profession: 'Abogado', ethnicity: 'Afroamericano', interests: ['Música', 'Teatro'], sports: ['Baloncesto'], university: 'UNT', distance: '64 kilómetros', intención: 'Hacer amigos'  },
+    { src: image2, name: 'Santiago Pacherres', age: '30 años', height: '1.80 cm', profession: 'Médico', ethnicity: 'Caucásico', interests: ['Lectura', 'Viajes'], sports: ['Tenis', 'Ciclismo'], university: 'UNT', distance: '64 kilómetros', intention: 'Hacer amigos' },
+    { src: image3, name: 'Mauricio Berrospi', age: '35 años', height: '1.65 cm', profession: 'Abogado', ethnicity: 'Afroamericano', interests: ['Música', 'Teatro'], sports: ['Baloncesto'], university: 'UNT', distance: '64 kilómetros', intention: 'Hacer amigos'  },
     { src: image4, name: 'Oscar Llaure', age: '42 años', height: '1.70 cm', profession: 'Arquitecto', ethnicity: 'Asiático', interests: ['Fotografía', 'Pintura'], sports: ['Yoga'], university: 'UNT', distance: '64 kilómetros', intención: 'Hacer amigos' },
     { src: image5, name: 'Stefano Yepez', age: '32 años', height: '1.75 cm', profession: 'Ingeniero', ethnicity: 'Latino', interests: ['Fotografía', 'Futbol'], sports: ['Futbol'], university: 'UNT', distance: '64 kilómetros', intención: 'Hacer amigos' },
     { src: image6, name: 'Walter Ivan', age: '37 años', height: '1.75 cm', profession: 'Docente', ethnicity: 'Caucásico', interests: ['Tenis', 'Pintura'], sports: ['Atletismo'], university: 'UNT', distance: '64 kilómetros', intención: 'Hacer amigos'},
@@ -53,6 +53,10 @@ const Main = forwardRef((props, ref) => {
     props.onChatClick(person);
   };
 
+  const handleFavoriteClick = (person) => {
+    props.onFavoriteClick(person);
+  };
+
   const handleRefreshClick = () => {
     const newImages = [];
     while (newImages.length < initialImages.length) {
@@ -62,10 +66,6 @@ const Main = forwardRef((props, ref) => {
       }
     }
     setImages(newImages);
-  };
-
-  const handleFavoriteClick = (person) => {
-    props.onFavoriteClick(person);
   };
 
   React.useImperativeHandle(ref, () => ({
@@ -86,7 +86,7 @@ const Main = forwardRef((props, ref) => {
           <div className="image-icons">
             <i className="fas fa-comments" onClick={() => handleChatClick(image)}></i>
             <i className="fas fa-kiss-wink-heart" onClick={() => handleKissClick(index)}></i>
-            <i className="fas fa-star" onClick={() => handleFavoriteClick(image)}></i> {/* Icono de favoritos */}
+            <i className="fas fa-star" onClick={() => handleFavoriteClick(image)}></i>
           </div>
         </div>
       ))}

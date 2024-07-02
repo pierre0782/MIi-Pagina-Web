@@ -1,13 +1,17 @@
 import React from 'react';
 import './style.css';
+import Lucas from './imagenes/9.png';
+import Pierreluiggi from './imagenes/1.png';
+import Miguel from './imagenes/11.jpg';
 
-const Single = ({ messages, activeTab, onTabClick, onSelectPerson, favorites }) => {
+
+const Single = ({ messages, activeTab, onTabClick, onSelectPerson, blockedUsers, favoriteUsers }) => {
   const renderContent = () => {
     switch (activeTab) {
       case 'mensajes':
         return Object.entries(messages).map(([personName, messages]) => {
           const lastMessage = messages[messages.length - 1];
-          const person = messages[0]?.person || {}; // Obtenemos la información completa de la persona
+          const person = messages[0].person;
           return (
             <div key={personName} className="message-item" onClick={() => onSelectPerson(person)}>
               <img src={person.src} alt={personName} className="message-avatar"/>
@@ -22,22 +26,48 @@ const Single = ({ messages, activeTab, onTabClick, onSelectPerson, favorites }) 
         return (
           <div className="messages-list">
             {/* Aquí agrega los usuarios que enviaron besos */}
+            <div className="message-item">
+              <img src={Pierreluiggi} alt="Pierreluiggi" className="message-avatar"/>
+              <div className="message-text">
+                <span className="message-name">Pierreluiggi</span>
+                <span className="message-preview">Te envió un beso</span>
+              </div>
+            </div>
+            <div className="message-item">
+              <img src={Lucas} alt="Lucas" className="message-avatar"/>
+              <div className="message-text">
+                <span className="message-name">Lucas</span>
+                <span className="message-preview">Te ha enviado un beso</span>
+              </div>
+            </div>
+            <div className="message-item">
+              <img src={Miguel} alt="Miguel" className="message-avatar"/>
+              <div className="message-text">
+                <span className="message-name">Miguel</span>
+                <span className="message-preview">Te ha enviado un beso</span>
+              </div>
+            </div>
           </div>
         );
       case 'favoritos':
-        return (
-          <div className="messages-list">
-            {favorites.map((person) => (
-              <div key={person.name} className="message-item" onClick={() => onSelectPerson(person)}>
-                <img src={person.src} alt={person.name} className="message-avatar"/>
-                <div className="message-text">
-                  <span className="message-name">{person.name}</span>
-                  <span className="message-preview">{person.profession}</span>
-                </div>
-              </div>
-            ))}
+        return favoriteUsers.map((person) => (
+          <div key={person.name} className="message-item" onClick={() => onSelectPerson(person)}>
+            <img src={person.src} alt={person.name} className="message-avatar"/>
+            <div className="message-text">
+              <span className="message-name">{person.name}</span>
+            </div>
           </div>
-        );
+        ));
+      case 'blocked':
+        return blockedUsers.map((person) => (
+          <div key={person.name} className="message-item">
+            <img src={person.src} alt={person.name} className="message-avatar"/>
+            <div className="message-text">
+              <span className="message-name">{person.name}</span>
+              <span className="message-preview">Esta persona está bloqueada</span>
+            </div>
+          </div>
+        ));
       default:
         return null;
     }
@@ -58,8 +88,8 @@ const Single = ({ messages, activeTab, onTabClick, onSelectPerson, favorites }) 
       </div>
       <div className="messages-list">
         {renderContent()}
-      </div> {/* Corrección: cierre correcto de la etiqueta */}
-      <div className="blocked-accounts">
+      </div>
+      <div className="blocked-accounts" onClick={() => onTabClick('blocked')}>
         <span>Cuentas bloqueadas</span>
       </div>
     </div>
