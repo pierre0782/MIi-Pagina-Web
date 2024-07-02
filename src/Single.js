@@ -1,68 +1,41 @@
-import React, { useState } from 'react';
-import './style.css'; 
-import Constantino from './imagenes/9.png';
-import Luis from './imagenes/1.png';
-import Miguel from './imagenes/11.jpg';
+import React from 'react';
+import './style.css';
 
-const Single = () => {
-  const [activeTab, setActiveTab] = useState('mensajes');
-
-  const handleTabClick = (tab) => {
-    setActiveTab(tab);
-  };
-
+const Single = ({ messages, activeTab, onTabClick, onSelectPerson, favorites }) => {
   const renderContent = () => {
     switch (activeTab) {
       case 'mensajes':
-        return (
-          <div className="messages-list">
-            <div className="message-item">
-              <img src={Constantino} alt="Constantino" className="message-avatar"/>
+        return Object.entries(messages).map(([personName, messages]) => {
+          const lastMessage = messages[messages.length - 1];
+          const person = messages[0]?.person || {}; // Obtenemos la información completa de la persona
+          return (
+            <div key={personName} className="message-item" onClick={() => onSelectPerson(person)}>
+              <img src={person.src} alt={personName} className="message-avatar"/>
               <div className="message-text">
-                <span className="message-name">Constantino</span>
-                <span className="message-preview">Hola</span>
+                <span className="message-name">{personName}</span>
+                <span className="message-preview">{lastMessage.text}</span>
               </div>
             </div>
-            <div className="message-item">
-              <img src={Luis} alt="Luis" className="message-avatar"/>
-              <div className="message-text">
-                <span className="message-name">Luis</span>
-                <span className="message-preview">Hola</span>
-              </div>
-            </div>
-            <div className="message-item">
-              <img src={Miguel} alt="Miguel" className="message-avatar"/>
-              <div className="message-text">
-                <span className="message-name">Miguel</span>
-                <span className="message-preview">Hola</span>
-              </div>
-            </div>
-          </div>
-        );
+          );
+        });
       case 'besos':
         return (
           <div className="messages-list">
             {/* Aquí agrega los usuarios que enviaron besos */}
-            <div className="message-item">
-              <img src={Luis} alt="Luis" className="message-avatar"/>
-              <div className="message-text">
-                <span className="message-name">Luis</span>
-                <span className="message-preview">Te envió un beso</span>
-              </div>
-            </div>
           </div>
         );
       case 'favoritos':
         return (
           <div className="messages-list">
-            {/* Aquí agrega los usuarios que están en favoritos */}
-            <div className="message-item">
-              <img src={Miguel} alt="Miguel" className="message-avatar"/>
-              <div className="message-text">
-                <span className="message-name">Miguel</span>
-                <span className="message-preview">Es tu favorito</span>
+            {favorites.map((person) => (
+              <div key={person.name} className="message-item" onClick={() => onSelectPerson(person)}>
+                <img src={person.src} alt={person.name} className="message-avatar"/>
+                <div className="message-text">
+                  <span className="message-name">{person.name}</span>
+                  <span className="message-preview">{person.profession}</span>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         );
       default:
@@ -73,17 +46,19 @@ const Single = () => {
   return (
     <div className="single">
       <div className="messages-header icons-header">
-        <div className={`icon-container ${activeTab === 'mensajes' ? 'active' : ''}`} onClick={() => handleTabClick('mensajes')}>
+        <div className={`icon-container ${activeTab === 'mensajes' ? 'active' : ''}`} onClick={() => onTabClick('mensajes')}>
           <i className="fas fa-comments"></i>
         </div>
-        <div className={`icon-container ${activeTab === 'besos' ? 'active' : ''}`} onClick={() => handleTabClick('besos')}>
+        <div className={`icon-container ${activeTab === 'besos' ? 'active' : ''}`} onClick={() => onTabClick('besos')}>
           <i className="fas fa-kiss-wink-heart"></i>
         </div>
-        <div className={`icon-container ${activeTab === 'favoritos' ? 'active' : ''}`} onClick={() => handleTabClick('favoritos')}>
+        <div className={`icon-container ${activeTab === 'favoritos' ? 'active' : ''}`} onClick={() => onTabClick('favoritos')}>
           <i className="fas fa-star"></i>
         </div>
       </div>
-      {renderContent()}
+      <div className="messages-list">
+        {renderContent()}
+      </div> {/* Corrección: cierre correcto de la etiqueta */}
       <div className="blocked-accounts">
         <span>Cuentas bloqueadas</span>
       </div>

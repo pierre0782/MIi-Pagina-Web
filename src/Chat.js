@@ -12,8 +12,7 @@ import gif4 from './imagenes/GIF4.gif';
 import gif5 from './imagenes/GIF5.gif'; 
 import gif6 from './imagenes/GIF6.gif'; 
 
-const Chat = ({ person }) => {
-  const [messages, setMessages] = useState([]);
+const Chat = ({ person, messages, onNewMessage }) => {
   const [newMessage, setNewMessage] = useState('');
   const [showDetails, setShowDetails] = useState(false);
   const [showGifs, setShowGifs] = useState(false);
@@ -21,7 +20,8 @@ const Chat = ({ person }) => {
   const handleSendMessage = () => {
     if (newMessage.trim() !== '') {
       const timestamp = new Date();
-      setMessages([...messages, { text: newMessage, sender: 'user', timestamp }]);
+      const message = { text: newMessage, sender: 'user', timestamp, person };
+      onNewMessage(person, message);
       setNewMessage('');
     }
   };
@@ -38,13 +38,15 @@ const Chat = ({ person }) => {
 
   const handleContactClick = (icon, content) => {
     const timestamp = new Date();
-    setMessages([...messages, { text: `<img src="${icon}" alt="icon" class="contact-icon"/> ${content}`, sender: 'user', timestamp, isContact: true }]);
+    const message = { text: `<img src="${icon}" alt="icon" class="contact-icon"/> ${content}`, sender: 'user', timestamp, isContact: true };
+    onNewMessage(person, message);
     setShowDetails(false); // Oculta los detalles de contacto después de hacer clic
   };
 
   const handleGifClick = (gif) => {
     const timestamp = new Date();
-    setMessages([...messages, { text: `<img src="${gif}" alt="GIF" class="gif-img"/>`, sender: 'user', timestamp, isGif: true }]);
+    const message = { text: `<img src="${gif}" alt="GIF" class="gif-img"/>`, sender: 'user', timestamp, isGif: true };
+    onNewMessage(person, message);
     setShowGifs(false); // Oculta los GIFs después de hacer clic
   };
 
