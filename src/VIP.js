@@ -34,7 +34,7 @@ const VIP = ({ onBackClick }) => {
           <img src={sugardaddyLogo} alt="SuggarDaddy" className="sugardaddy-logo" />
           <div className="vip-text">
             <h2>SUGGARDADDY PLUS™</h2>
-            <p>¡Likes ilimitados y más!</p>
+            <p>¡Besos ilimitados y más!</p>
           </div>
         </div>
       </button>
