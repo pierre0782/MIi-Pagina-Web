@@ -102,6 +102,7 @@ nav a:hover {
   border-radius: 8px; /* Redondear bordes */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Añadir sombra */
   margin-left: -30px;
+  position: relative;
 }
 
 .icons-header {
@@ -812,3 +813,20 @@ nav a:hover {
   background-color: #e04a4e;
 }
 
+/* Toggle Button */
+.toggle-button {
+  position: absolute;
+  top: 50%;
+  right: -30px;
+  transform: translateY(-50%);
+  background-color: #393637;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.toggle-button:hover {
+  background-color: #292525;
+}

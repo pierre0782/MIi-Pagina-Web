@@ -4,8 +4,7 @@ import Lucas from './imagenes/9.png';
 import Pierreluiggi from './imagenes/1.png';
 import Miguel from './imagenes/11.jpg';
 
-
-const Single = ({ messages, activeTab, onTabClick, onSelectPerson, blockedUsers, favoriteUsers }) => {
+const Single = ({ messages, activeTab, onTabClick, onSelectPerson, blockedUsers, favoriteUsers, toggleSingle }) => {
   const renderContent = () => {
     switch (activeTab) {
       case 'mensajes':
@@ -25,7 +24,6 @@ const Single = ({ messages, activeTab, onTabClick, onSelectPerson, blockedUsers,
       case 'besos':
         return (
           <div className="messages-list">
-            {/* Aquí agrega los usuarios que enviaron besos */}
             <div className="message-item">
               <img src={Pierreluiggi} alt="Pierreluiggi" className="message-avatar"/>
               <div className="message-text">
@@ -75,6 +73,7 @@ const Single = ({ messages, activeTab, onTabClick, onSelectPerson, blockedUsers,
 
   return (
     <div className="single">
+      <button onClick={toggleSingle} className="toggle-button">Cerrar</button>
       <div className="messages-header icons-header">
         <div className={`icon-container ${activeTab === 'mensajes' ? 'active' : ''}`} onClick={() => onTabClick('mensajes')}>
           <i className="fas fa-comments"></i>
