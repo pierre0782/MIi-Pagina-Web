@@ -85,7 +85,12 @@ const App = () => {
         {showVIP ? (
           <VIP onBackClick={() => setShowVIP(false)} />
         ) : selectedPersonForInfo ? (
-          <Informacion person={selectedPersonForInfo} onBackClick={() => setSelectedPersonForInfo(null)} />
+          <Informacion 
+            person={selectedPersonForInfo} 
+            onBackClick={() => setSelectedPersonForInfo(null)}
+            onChatClick={handleSelectPersonForChat}
+            onFavoriteClick={handleFavoriteClick}
+          />
         ) : selectedPersonForChat ? (
           <Chat
             person={selectedPersonForChat}

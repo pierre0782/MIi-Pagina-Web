@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css'; 
 
-const Informacion = ({ person, onBackClick }) => {
+const Informacion = ({ person, onBackClick, onChatClick, onFavoriteClick }) => {
   if (!person) return null;
 
   return (
@@ -23,13 +23,13 @@ const Informacion = ({ person, onBackClick }) => {
             <div><strong>Deporte:</strong> {person.sports && person.sports.map(sport => <span key={sport}>{sport}</span>)}</div>
           </div>
           <div className="info-icons">
-            <div className="icon-container">
+            <div className="icon-container" onClick={() => onChatClick(person)}>
               <i className="fas fa-comments"></i>
             </div>
             <div className="icon-container">
               <i className="fas fa-kiss-wink-heart"></i>
             </div>
-            <div className="icon-container">
+            <div className="icon-container" onClick={() => onFavoriteClick(person)}>
               <i className="fas fa-star"></i>
             </div>
           </div>
